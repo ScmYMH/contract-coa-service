@@ -1,24 +1,23 @@
 package com.scm.contract.coa.service;
 
-import com.scm.contract.coa.entity.ContractInfoEntity;
+import com.scm.contract.coa.model.ContractAndMasterJoinDto;
 import com.scm.contract.coa.model.ContractInfoDto;
-import com.scm.contract.coa.repository.CoaRepository;
+import com.scm.contract.coa.model.TariffInfoDto;
+import com.scm.contract.coa.repository.CoaMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
-public class CoaService {
+@Slf4j
+public class CoaService implements CoaServiceImpl{
 
-    @Autowired
-    CoaRepository coaRepository;
+//    public List<ContractInfoEntity> getAllContractList() {
+//        return coaRepository.findAll();
+//    }
 
-    public List<ContractInfoEntity> getAllContractList() {
-        return coaRepository.findAll();
-    }
-//
 //    public Stream<ContractInfoDto> getContractList(String cntrtId, String cntrtNm, String cntrtScd, String insDate){
 //        List<ContractInfoEntity> contractInfo = coaRepository.findByCntrtIdContainingAndCntrtIdContainingAndCntrtScdContainingAndInsDateContaining(cntrtId, cntrtNm, cntrtScd, insDate);
 //
@@ -44,8 +43,21 @@ public class CoaService {
 //        });
 //        return contractInfoData;
 //    }
+    @Autowired
+    CoaMapper coaMapper;
 
-    public List<ContractInfoEntity> testAll(){
-        return coaRepository.testAll();
+    @Override
+    public List<ContractInfoDto> getContractInfo() {
+        return coaMapper.getContractInfo();
+    }
+
+    @Override
+    public List<ContractAndMasterJoinDto> getContractInfoByConditions(ContractAndMasterJoinDto contractAndMasterJoinDto) {
+        return coaMapper.getContractInfoByConditions(contractAndMasterJoinDto);
+    }
+
+    @Override
+    public List<TariffInfoDto> getTariffInfoByCntrtId(String cntrt_id, String svc_nm, String detl_svc_nm) {
+        return coaMapper.getTariffInfoByCntrtId(cntrt_id, svc_nm, detl_svc_nm);
     }
 }

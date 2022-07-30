@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scm.contract.coa.repository.CoaMapper">
+    <select id="getTariffInfoByCntrtId" resultType="TariffInfoDto">
+        SELECT
+            trff_nm, trff_desc,
+            (select cd_v_meaning from tcom.tb_code_definition where cd_v = biz_tcd) as biz_nm,
+            (select cd_v_meaning from tcom.tb_code_definition where cd_v = svc_tcd) as svc_nm,
+            (select cd_v_meaning from tcom.tb_code_definition where cd_v = detl_svc_tcd) as detl_svc_nm,
+            ins_date
+        FROM
+            tcms.tb_cntrt_trff_info
+        WHERE
+            cntrt_id = #{cntrt_id}
+        AND
+            (select cd_v_meaning from tcom.tb_code_definition where cd_v = svc_tcd) LIKE CONCAT('%', #{svc_nm}, '%')
+        AND
+            (select cd_v_meaning from tcom.tb_code_definition where cd_v = detl_svc_tcd) LIKE CONCAT('%', #{detl_svc_nm}, '%')
+    </select>
+    <select id="getContractInfoByConditions" resultType="ContractAndMasterJoinDto">
+        SELECT
+            a.cntrt_nm, b.cd_v_meaning, a.cntrt_start_date, a.cntrt_end_date, a.user_nm, a.cntrt_id
+        FROM
+            (
+                SELECT
+                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date
+                FROM
+                    tcms.tb_cntrt_info tci
+                JOIN
+                    (SELECt user_nm, user_id FROM tcom.tb_user_info) tui
+                ON
+                    tui.user_id = tci.cre_person_id
+            ) a
+        JOIN
+            (SELECT cd_v, cd_v_meaning FROM tcom.tb_code_definition) b
+        ON
+            b.cd_v = a.cntrt_scd
+        WHERE
+            a.cntrt_id LIKE CONCAT('%', #{cntrt_id}, '%')
+        AND
+            a.cntrt_nm LIKE CONCAT('%', #{cntrt_nm}, '%')
+        AND
+            a.ins_date LIKE CONCAT('%', #{ins_date}, '%')
+        AND
+            b.cd_v_meaning LIKE CONCAT('%', #{cd_v_meaning}, '%')
+    </select>
+</mapper>

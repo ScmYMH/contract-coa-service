@@ -12,40 +12,34 @@ import javax.persistence.Table;
 @Table(name = "TB_CNTRT_INFO", schema = "TCMS")
 public class ContractInfoEntity {
     @Id
-    @Column(name = "CNTRT_ID")
+    @Column(name = "cntrt_id")
     private String cntrtId;
-    @Column(name = "CNTRT_TCD")
+    @Column(name = "cntrt_tcd")
     private String cntrtTcd;
-    @Column(name = "CNTRT_NM")
+    @Column(name = "cntrt_nm")
     private String cntrtNm;
-    @Column(name = "CNTRT_SCD")
+    @Column(name = "cntrt_scd")
     private String cntrtScd;
-    @Column(name = "CRE_PERSON_ID")
+    @Column(name = "cre_person_id")
     private String crePersonId;
-    @Column(name = "CNTRT_START_DATE")
+    @Column(name = "cntrt_start_date")
     private String cntrtStartDate;
-    @Column(name = "CNTRT_END_DATE")
+    @Column(name = "cntrt_end_date")
     private String cntrtEndDate;
-    @Column(name = "CNTRT_CURR_CD")
+    @Column(name = "cntrt_curr_cd")
     private String cntrtCurrCd;
-    @Column(name = "DEL_YN")
+    @Column(name = "del_yn")
     private String delYn;
-
-    @Column(name = "INS_PERSON_ID")
+    @Column(name = "ins_person_id")
     private String insPersonId;
-
-    @Column(name = "INS_DATE")
+    @Column(name = "ins_date")
     private String insDate;
-
-    @Column(name = "INS_TIME")
+    @Column(name = "ins_time")
     private String insTime;
-
-    @Column(name = "UPD_DATE")
+    @Column(name = "upd_date")
     private String updDate;
-
-    @Column(name = "UPD_TIME")
+    @Column(name = "upd_time")
     private String updTime;
-
-    @Column(name = "UPD_PERSON_ID")
+    @Column(name = "upd_person_id")
     private String updPersonId;
 }
