@@ -19,7 +19,7 @@ public class ContractChangeController {
     @Autowired
     CoaChangeServiceImpl coaChangeService;
 
-    @GetMapping("")
+    @GetMapping("/info")
     public List<ContractChangeInfoDto> getCoaChangeInfo() {
         ContractChangeInfoDto contractChangeInfoDto = new ContractChangeInfoDto();
 
