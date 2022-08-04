@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.scm.contract.coaChange.repository.CoaChangeMapper">
+    <select id="getCoaChangeInfo" resultType="ContractChangeInfoDto">
+        SELECT CNTRT_LOG_SEQ_NO ,
+        RANK() OVER(
+        ORDER BY CNTRT_LOG_SEQ_NO) AS NO ,
+        CNTRT_ID ,
+        INS_DATE ,
+        INS_TIME ,
+        TO_CHAR(TO_DATE(UPD_DATE || UPD_TIME , 'YYYYMMDD HH24MISS') , 'YYYY-MM-DD HH24:MI:SS') AS UPD_DATE ,
+        UPD_TIME ,
+        CNTRT_EDIT_COMMENT ,
+        INS_PERSON_ID ,
+        UPD_PERSON_ID ,
+        (SELECT USER_NM
+        FROM   GCOM.TADM_USER
+        WHERE  USER_ID = T1.INS_PERSON_ID) AS INS_PERSON_NM ,
+        (SELECT USER_NM
+        FROM   GCOM.TADM_USER
+        WHERE  USER_ID = T1.UPD_PERSON_ID) AS UPD_PERSON_NM
+
+        FROM   GCMS.TCMS_CNTRT_LOG T1
+        WHERE  CNTRT_ID = '20220803261085'
+        ORDER BY T1.CNTRT_LOG_SEQ_NO DESC
+    </select>
+</mapper>
