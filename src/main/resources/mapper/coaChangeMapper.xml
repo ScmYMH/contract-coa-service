@@ -12,8 +12,8 @@
         CNTRT_ID ,
         INS_DATE ,
         INS_TIME ,
-        UPD_DATE ,
-        UPD_TIME ,
+        TO_CHAR(TO_DATE(UPD_DATE,  'YYYYMMDD') , 'YYYY-MM-DD') AS UPD_DATE ,
+        TO_CHAR(to_timestamp (UPD_TIME,  'HH24MISS') , 'HH24:MI:SS') AS UPD_TIME ,
         CNTRT_EDIT_COMMENT ,
         INS_PERSON_ID ,
         UPD_PERSON_ID ,
@@ -25,6 +25,6 @@
         WHERE  USER_ID = T1.UPD_PERSON_ID) AS USER_NM
         FROM   TCMS.tb_cntrt_history T1
         WHERE  CNTRT_ID = '20220501000003'
-        ORDER BY T1.CNTRT_LOG_SEQ_NO DESC
+        ORDER BY T1.CNTRT_LOG_SEQ_NO desc
     </select>
 </mapper>
