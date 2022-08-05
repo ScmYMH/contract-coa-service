@@ -1,6 +1,6 @@
 package com.scm.contract.coa.controller;
 
-import com.scm.contract.coa.entity.ContractInfoEntity;
+import com.scm.contract.coa.model.CodeDefinitionDto;
 import com.scm.contract.coa.model.ContractAndMasterJoinDto;
 import com.scm.contract.coa.model.ContractInfoDto;
 import com.scm.contract.coa.model.TariffInfoDto;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("coa")
@@ -20,6 +19,12 @@ public class CoaController {
 
     @Autowired
     CoaServiceImpl coaService;
+
+    @PostMapping("")
+    public boolean insertContractInfo(@RequestBody ContractInfoDto contractInfoDto){
+        log.info(String.valueOf(contractInfoDto));
+        return coaService.postContractInfo(contractInfoDto);
+    }
 
     @GetMapping("/search")
     public List<ContractAndMasterJoinDto> getAllContractList(
@@ -41,11 +46,8 @@ public class CoaController {
         return coaService.getTariffInfoByCntrtId(cntrtId, svcNm, detlSvcNm);
     }
 
-
-//    @GetMapping("/search")
-//    public Stream<ContractInfoDto> getContractInfo(@RequestParam String cntrtId, @RequestParam String cntrtNm,  @RequestParam String cntrtScd, @RequestParam String insDate) {
-//        log.info("---------------");
-//        return coaService.getContractList( cntrtId, cntrtNm, cntrtScd, insDate);
-//    }
-
+    @GetMapping("/code")
+    public List<CodeDefinitionDto> getCodeDefinition() {
+        return coaService.getCodeDefinition();
+    }
 }
