@@ -56,13 +56,13 @@
     <insert id="postContractInfo" parameterType="ContractInfoDto">
         INSERT INTO tcms.tb_cntrt_info
         (
-            cntrt_id, cntrt_nm, cntrt_scd, cntrt_start_date, cntrt_end_date,
+            cntrt_nm, cntrt_scd, cntrt_start_date, cntrt_end_date,
             cntrt_tcd, cre_person_id, ins_date, ins_person_id, ins_time, upd_date,
             upd_person_id, upd_time, cntrt_curr_cd, del_yn
         )
         VALUES
         (
-            #{cntrtId}, #{cntrtNm}, #{cntrtScd}, #{cntrtStartDate}, #{cntrtEndDate},
+            #{cntrtNm}, #{cntrtScd}, #{cntrtStartDate}, #{cntrtEndDate},
             #{cntrtTcd}, #{crePersonId}, #{insDate}, #{insPersonId}, #{insTime}, #{updDate},
             #{updPersonId}, #{updTime}, #{cntrtCurrCd}, #{delYn}
         )
