@@ -26,8 +26,8 @@ public class CoaServiceImpl implements CoaService {
     }
 
     @Override
-    public List<ContractAndMasterJoinDto> getContractInfoByConditions(ContractAndMasterJoinDto contractAndMasterJoinDto) {
-        return coaMapper.getContractInfoByConditions(contractAndMasterJoinDto);
+    public List<ContractAndMasterJoinDto> getContractInfoByConditions(String cntrt_id, String cntrt_nm, String ins_date, String cd_v_meaning) {
+        return coaMapper.getContractInfoByConditions(cntrt_id, cntrt_nm, ins_date, cd_v_meaning);
     }
 
     @Override

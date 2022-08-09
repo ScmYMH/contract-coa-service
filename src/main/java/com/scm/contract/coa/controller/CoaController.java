@@ -30,13 +30,8 @@ public class CoaController {
     public List<ContractAndMasterJoinDto> getAllContractList(
             @RequestParam String cntrtId, @RequestParam String cntrtNm,
             @RequestParam String cdvMeaning, @RequestParam String insDate) {
-        ContractAndMasterJoinDto contractAndMasterJoinDto = new ContractAndMasterJoinDto();
-        contractAndMasterJoinDto.setCntrt_id(cntrtId);
-        contractAndMasterJoinDto.setCntrt_nm(cntrtNm);
-        contractAndMasterJoinDto.setIns_date(insDate);
-        contractAndMasterJoinDto.setCd_v_meaning(cdvMeaning);
 
-        return coaService.getContractInfoByConditions(contractAndMasterJoinDto);
+        return coaService.getContractInfoByConditions(cntrtId, cntrtNm, insDate, cdvMeaning);
     }
 
     @GetMapping("/tariff")

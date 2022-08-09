@@ -49,22 +49,33 @@
         AND
             a.cntrt_nm LIKE CONCAT('%', #{cntrt_nm}, '%')
         AND
-            a.ins_date LIKE CONCAT('%', #{ins_date}, '%')
-        AND
             b.cd_v_meaning LIKE CONCAT('%', #{cd_v_meaning}, '%')
+        <choose>
+            <when test="ins_date!=null&amp;&amp;ins_date!=''" >
+                AND
+                    a.cntrt_start_date <![CDATA[<=]]> #{ins_date}
+                AND
+                    a.cntrt_end_date <![CDATA[>=]]> #{ins_date}
+            </when>
+            <otherwise>
+            AND
+                a.ins_date LIKE CONCAT('%', #{ins_date}, '%')
+            </otherwise>
+        </choose>
     </select>
+
     <insert id="postContractInfo" parameterType="ContractInfoDto">
         INSERT INTO tcms.tb_cntrt_info
         (
             cntrt_nm, cntrt_scd, cntrt_start_date, cntrt_end_date,
             cntrt_tcd, cre_person_id, ins_date, ins_person_id, ins_time, upd_date,
-            upd_person_id, upd_time, cntrt_curr_cd, del_yn
+            upd_person_id, upd_time, cntrt_curr_cd, del_yn, cntrt_typ_gcd
         )
         VALUES
         (
             #{cntrtNm}, #{cntrtScd}, #{cntrtStartDate}, #{cntrtEndDate},
             #{cntrtTcd}, #{crePersonId}, #{insDate}, #{insPersonId}, #{insTime}, #{updDate},
-            #{updPersonId}, #{updTime}, #{cntrtCurrCd}, #{delYn}
+            #{updPersonId}, #{updTime}, #{cntrtCurrCd}, #{delYn}, #{cntrtTypGcd}
         )
     </insert>
 

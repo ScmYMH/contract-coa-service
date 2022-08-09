@@ -25,4 +25,7 @@ public class ContractInfoDto {
     private String updTime;
     private String delYn;
     private String cntrtCurrCd;
+    private String corpId;
+    private String cntrtTypGcd;
+    private String cntrtEditComment;
 }
