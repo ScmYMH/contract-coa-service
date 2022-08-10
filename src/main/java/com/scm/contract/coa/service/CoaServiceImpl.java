@@ -60,6 +60,11 @@ public class CoaServiceImpl implements CoaService {
     }
 
     @Override
+    public String getAutoIncrementContractId() {
+        return coaMapper.getAutoIncrementContractId();
+    }
+
+    @Override
     public List<CodeDefinitionDto> getCodeDefinition() {
         return coaMapper.getCodeDefinition();
     }

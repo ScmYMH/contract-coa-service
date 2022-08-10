@@ -14,6 +14,6 @@ public interface CoaService {
     List<TariffInfoDto> getTariffInfoByCntrtId(String cntrt_id, String svc_nm, String detl_svc_nm);
 
     boolean postContractInfo(ContractInfoDto contractInfoDto);
-
+    String getAutoIncrementContractId();
     List<CodeDefinitionDto> getCodeDefinition();
 }

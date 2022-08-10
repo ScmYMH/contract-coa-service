@@ -15,6 +15,7 @@ public interface CoaMapper {
     List<TariffInfoDto> getTariffInfoByCntrtId(String cntrt_id, String svc_nm, String detl_svc_nm);
 
     List<CodeDefinitionDto> getCodeDefinition();
+    String getAutoIncrementContractId();
 
     boolean postContractInfo(ContractInfoDto contractInfoDto);
 }

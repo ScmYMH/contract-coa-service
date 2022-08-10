@@ -45,4 +45,9 @@ public class CoaController {
     public List<CodeDefinitionDto> getCodeDefinition() {
         return coaService.getCodeDefinition();
     }
+
+    @GetMapping("/newcntrtid")
+    public String getAutoIncrementContractId() {
+        return coaService.getAutoIncrementContractId();
+    }
 }
