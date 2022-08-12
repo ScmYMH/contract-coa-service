@@ -16,4 +16,6 @@ public interface CoaService {
     boolean postContractInfo(ContractInfoDto contractInfoDto);
     String getAutoIncrementContractId();
     List<CodeDefinitionDto> getCodeDefinition();
+
+    Integer updateCntrtInfo(ContractInfoDto contractInfoDto);
 }

@@ -12,4 +12,6 @@ public class TariffInfoDto {
     private String svc_nm;
     private String detl_svc_nm;
     private String ins_date;
+    private String detl_svc_tcd;
+    private String trff_id;
 }

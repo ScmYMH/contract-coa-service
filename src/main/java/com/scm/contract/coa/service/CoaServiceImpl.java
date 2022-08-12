@@ -37,7 +37,6 @@ public class CoaServiceImpl implements CoaService {
 
     @Override
     public boolean postContractInfo(ContractInfoDto contractInfoDto) {
-        log.info(String.valueOf("before>>>>>>>>"+ contractInfoDto));
         Date today = new Date();
         contractInfoDto.setDelYn("N");
         contractInfoDto.setInsDate(new SimpleDateFormat("yyyyMMdd").format(today));
@@ -54,8 +53,6 @@ public class CoaServiceImpl implements CoaService {
         contractInfoDto.setInsPersonId(contractInfoDto.getInsPersonId());
         contractInfoDto.setUpdPersonId(contractInfoDto.getUpdPersonId());
 
-        log.info(String.valueOf("after>>>>>>>>"+ contractInfoDto));
-
         return coaMapper.postContractInfo(contractInfoDto);
     }
 
@@ -67,5 +64,10 @@ public class CoaServiceImpl implements CoaService {
     @Override
     public List<CodeDefinitionDto> getCodeDefinition() {
         return coaMapper.getCodeDefinition();
+    }
+
+    @Override
+    public Integer updateCntrtInfo(ContractInfoDto contractInfoDto) {
+        return coaMapper.updateCntrtInfo(contractInfoDto);
     }
 }

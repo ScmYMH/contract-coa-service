@@ -18,4 +18,6 @@ public interface CoaMapper {
     String getAutoIncrementContractId();
 
     boolean postContractInfo(ContractInfoDto contractInfoDto);
+
+    Integer updateCntrtInfo(ContractInfoDto contractInfoDto);
 }

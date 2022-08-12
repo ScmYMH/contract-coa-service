@@ -26,6 +26,12 @@ public class CoaController {
         return coaService.postContractInfo(contractInfoDto);
     }
 
+    @PutMapping("")
+    public Integer updateCntrtInfo(@RequestBody ContractInfoDto contractInfoDto){
+        log.info(String.valueOf(contractInfoDto));
+        return coaService.updateCntrtInfo(contractInfoDto);
+    }
+
     @GetMapping("/search")
     public List<ContractAndMasterJoinDto> getAllContractList(
             @RequestParam String cntrtId, @RequestParam String cntrtNm,
@@ -50,4 +56,5 @@ public class CoaController {
     public String getAutoIncrementContractId() {
         return coaService.getAutoIncrementContractId();
     }
+
 }
