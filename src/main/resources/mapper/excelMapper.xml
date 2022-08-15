@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.scm.contract.excel.repository.ImportExcelMapper">
+    <insert id="postImportExcelData" parameterType="ImportExcelDto">
+        insert into tcms.tb_cntrt_trff_cond_h
+        ("CNTRT_ID", "TRFF_ID", "LCC_CD", "SUB_LCC_CD", "TRFF_STAT_DATE", "TRFF_END_DATE", "CNTRT_CURR_CD", "PAY_CURR_CD", "INCO_CD", "PROD_GCD", "DEP_CD", "DEP_NM", "ARR_NM", "ARR_CD", "DEL_YN", "INS_DATE", "INS_TIME", "INS_PERSON_ID", "UPD_DATE", "UPD_TIME", "UPD_PERSON_ID")
+        values (#{cntrt_id}, #{trff_id}, #{lcc_cd}, #{sub_lcc_cd}, #{trff_stat_date}, #{trff_end_date}, #{cntrt_curr_cd}, #{pay_curr_cd}, #{inco_cd}, #{prod_gcd}, #{dep_cd}, #{dep_nm}, #{arr_nm}, #{arr_cd}, #{del_yn}, #{ins_date}, #{ins_time}, #{ins_person_id}, #{upd_date}, #{upd_time}, #{upd_person_id});
+
+        INSERT INTO
+        tcms.tb_cntrt_trff_cond_val_d
+        ("CNTRT_ID", "TRFF_ID",  "VAL_SEQ_NO", "DEL_YN", "INS_DATE", "INS_TIME", "INS_PERSON_ID", "UPD_DATE", "UPD_TIME", "UPD_PERSON_ID", "COND_ID",  "CAL_UNIT_CD", "CNTRT_CURR_CD", "PAY_CURR_CD", "UNIT_PRICE")
+        VALUES (#{cntrt_id}, #{trff_id}, #{val_seq_no}, #{del_yn}, #{ins_date}, #{ins_time}, #{ins_person_id}, #{upd_date}, #{upd_time}, #{upd_person_id}, #{cond_id}, #{cal_unit_cd}, #{cntrt_curr_cd}, #{pay_curr_cd}, #{unit_price})
+
+    </insert>
+</mapper>

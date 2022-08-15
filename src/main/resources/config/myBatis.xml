@@ -6,10 +6,12 @@
     <typeAliases>
         <package name="com.scm.contract.coa.model" />
         <package name="com.scm.contract.coaChange.model"/>
+        <package name="com.scm.contract.excel.model"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/coaMapper.xml"></mapper>
         <mapper resource="mapper/coaChangeMapper.xml"></mapper>
+        <mapper resource="mapper/excelMapper.xml"></mapper>
     </mappers>
 </configuration>
 
