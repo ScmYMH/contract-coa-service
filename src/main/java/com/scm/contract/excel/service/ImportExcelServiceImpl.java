@@ -39,6 +39,7 @@ public class ImportExcelServiceImpl implements ImportExcelService {
         importExcelDto.setTrff_id("271313");
         importExcelDto.setVal_seq_no(1);
         importExcelDto.setCond_id(importExcelDto.getCond_id());
+        importExcelDto.setCond_nm(importExcelDto.getCond_nm());
         importExcelDto.setCal_unit_cd(importExcelDto.getCal_unit_cd());
         importExcelDto.setUnit_price(importExcelDto.getUnit_price());
         importExcelDto.setCorp_id("PI");
@@ -46,6 +47,7 @@ public class ImportExcelServiceImpl implements ImportExcelService {
         importExcelDto.setUpd_time(new SimpleDateFormat("HHmmss").format(today));
         importExcelDto.setUpd_person_id("202207130004");
         importExcelDto.setLcc_cd_desc(importExcelDto.getLcc_cd());
+
 
 
         return importExcelMapper.postImportExcelData(importExcelDto);
