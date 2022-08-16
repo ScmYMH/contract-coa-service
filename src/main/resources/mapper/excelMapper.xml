@@ -21,14 +21,16 @@
         </foreach>
     </insert>
     <insert id="postImportExcelData2" parameterType="java.util.List">
-    <foreach collection="list" item="item" separator="," open="(" close=")">
+
         INSERT INTO
         tcms.tb_cntrt_trff_cond_val_d
         ("CNTRT_ID", "TRFF_ID", "VAL_SEQ_NO", "DEL_YN", "INS_DATE", "INS_TIME", "INS_PERSON_ID", "UPD_DATE", "UPD_TIME", "UPD_PERSON_ID", "COND_ID",  "CAL_UNIT_CD", "CNTRT_CURR_CD", "PAY_CURR_CD", "UNIT_PRICE")
         VALUES
-        (#{item.cntrt_id}, #{item.trff_id}, #{item.val_seq_no}, #{item.del_yn}, #{item.ins_date}, #{item.ins_time},
-        #{item.ins_person_id}, #{item.upd_date}, #{item.upd_time}, #{item.upd_person_id}, #{item.cond_id},
-        #{item.cal_unit_cd}, #{item.cntrt_curr_cd}, #{item.pay_curr_cd}, #{item.unit_price})
+        <foreach collection="list" item="item" separator="," >
+        (
+            #{item.cntrt_id}, #{item.trff_id}, #{item.val_seq_no}, #{item.del_yn}, #{item.ins_date}, #{item.ins_time},
+            #{item.ins_person_id}, #{item.upd_date}, #{item.upd_time}, #{item.upd_person_id}, #{item.cond_id},
+            #{item.cal_unit_cd}, #{item.cntrt_curr_cd}, #{item.pay_curr_cd}, #{item.unit_price})
     </foreach>
     </insert>
 </mapper>

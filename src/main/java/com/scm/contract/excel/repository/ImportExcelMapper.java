@@ -11,5 +11,6 @@ public interface ImportExcelMapper {
 
     boolean postImportExcelData(List<ImportExcelDto> importExcelDto);
 
+    boolean postImportExcelData2(List<ImportExcelDto> importExcelDto);
 
 }
