@@ -36,7 +36,7 @@ public class ImportExcelServiceImpl implements ImportExcelService {
         importExcelDto.setTrff_stat_date(importExcelDto.getTrff_stat_date());
         importExcelDto.setSub_lcc_cd(importExcelDto.getSub_lcc_cd());
         importExcelDto.setLcc_cd(importExcelDto.getLcc_cd());
-        importExcelDto.setTrff_id("271313");
+        importExcelDto.setTrff_id(271313);
         importExcelDto.setVal_seq_no(1);
         importExcelDto.setCond_id(importExcelDto.getCond_id());
         importExcelDto.setCond_nm(importExcelDto.getCond_nm());
@@ -46,7 +46,8 @@ public class ImportExcelServiceImpl implements ImportExcelService {
         importExcelDto.setUpd_date(new SimpleDateFormat("yyyyMMdd").format(today));
         importExcelDto.setUpd_time(new SimpleDateFormat("HHmmss").format(today));
         importExcelDto.setUpd_person_id("202207130004");
-        importExcelDto.setLcc_cd_desc(importExcelDto.getLcc_cd());
+        importExcelDto.setLcc_cd_desc(importExcelDto.getLcc_cd_desc());
+        importExcelDto.setSeq_no(importExcelDto.getSeq_no());
 
 
 

@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 public class ImportExcelDto {
 
 
+    private Integer seq_no;
     private String cntrt_id; //계약Id
-    private String trff_id; //타리프Id
+    private Integer trff_id; //타리프Id
     private Integer val_seq_no; //일련번호(seq 발번)
     private String lcc_cd; //물류비 코드
     private String sub_lcc_cd; //세부물류비 코드
