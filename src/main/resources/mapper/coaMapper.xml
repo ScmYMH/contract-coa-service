@@ -85,6 +85,7 @@
         )
     </insert>
     <update id="updateCntrtInfo" parameterType="ContractInfoDto">
+        WITH jobUpdate AS(
         UPDATE tcms.tb_cntrt_info
         SET UPD_DATE = #{updDate}
             ,UPD_TIME = #{updTime}
@@ -99,5 +100,18 @@
             ,CNTRT_CURR_CD = #{cntrtCurrCd}
             ,CNTRT_EDIT_COMMENT = #{cntrtCurrCd}
         WHERE CNTRT_ID = #{cntrtId}
+        )
+        INSERT INTO TCMS.TB_CNTRT_HISTORY
+        (
+            CNTRT_ID, CNTRT_TCD, CORP_ID, CNTRT_NM, CNTRT_SCD, CRE_PERSON_ID, CNTRT_STAT_DATE, CNTRT_END_DATE,
+            CNTRT_CURR_CD, INS_DATE, INS_TIME, INS_PERSON_ID, UPD_DATE, UPD_TIME, UPD_PERSON_ID, CNTRT_TYP_GCD,
+            CNTRT_EDIT_COMMENT
+        )
+        VALUES
+        (
+            #{cntrtId}, #{cntrtTcd}, #{corpId}, #{cntrtNm}, #{cntrtScd}, #{crePersonId}, #{cntrtStartDate}, #{cntrtEndDate},
+            #{cntrtCurrCd}, #{insDate}, #{insTime}, #{insPersonId}, #{updDate}, #{updTime}, #{updPersonId}, #{cntrtTypGcd},
+            #{cntrtEditComment}
+        )
     </update>
 </mapper>
