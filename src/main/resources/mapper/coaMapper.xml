@@ -37,7 +37,7 @@
         FROM
             (
                 SELECT
-                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date
+                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.del_yn
                 FROM
                     tcms.tb_cntrt_info tci
                 JOIN
@@ -53,6 +53,8 @@
             a.cntrt_id LIKE CONCAT('%', #{cntrt_id}, '%')
         AND
             a.cntrt_nm LIKE CONCAT('%', #{cntrt_nm}, '%')
+        and
+            a.del_yn = 'N'
         AND
             b.cd_v_meaning LIKE CONCAT('%', #{cd_v_meaning}, '%')
         <choose>
@@ -113,5 +115,15 @@
             #{cntrtCurrCd}, #{insDate}, #{insTime}, #{insPersonId}, #{updDate}, #{updTime}, #{updPersonId}, #{cntrtTypGcd},
             #{cntrtEditComment}
         )
+    </update>
+    <update id="deleteCntrtInfo" parameterType="ContractInfoDto">
+        UPDATE
+            tcms.tb_cntrt_info
+        SET
+             UPD_DATE = #{updDate}
+            ,UPD_TIME = #{updTime}
+            ,DEL_YN = #{delYn}
+        WHERE
+            CNTRT_ID = #{cntrtId}
     </update>
 </mapper>
