@@ -47,8 +47,6 @@ public class ImportExcelServiceImpl implements ImportExcelService {
         importExcelDto.setUpd_time(new SimpleDateFormat("HHmmss").format(today));
         importExcelDto.setUpd_person_id("202207130004");
         importExcelDto.setLcc_cd_desc(importExcelDto.getLcc_cd_desc());
-        importExcelDto.setSeq_no(importExcelDto.getSeq_no());
-
 
 
         return importExcelMapper.postImportExcelData(importExcelDto);
