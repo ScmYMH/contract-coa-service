@@ -20,7 +20,7 @@
 
         </foreach>
     </insert>
-    <insert id="postImportExcelData2" parameterType="java.util.List">
+    <insert id="postImportExcelData2" parameterType="ImportExcelDto">
 
         INSERT INTO
         tcms.tb_cntrt_trff_cond_val_d
