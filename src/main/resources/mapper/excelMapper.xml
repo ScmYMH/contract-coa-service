@@ -33,5 +33,61 @@
             #{item.cal_unit_cd}, #{item.cntrt_curr_cd}, #{item.pay_curr_cd}, #{item.unit_price})
     </foreach>
     </insert>
+    <select id="excelValidationInfo" parameterType="ImportExcelDto" resultType="Integer">
+
+
+        SELECT COUNT(*) AS CNT
+        FROM TCMS.TB_CNTRT_TRFF_COND_H
+        WHERE del_yn IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.del_yn}
+        </foreach>
+        AND cntrt_id IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.cntrt_id}
+        </foreach>
+        AND trff_id IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.trff_id}
+        </foreach>
+        AND dep_cd  IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.dep_cd}
+        </foreach>
+        AND arr_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.arr_cd}
+        </foreach>
+        AND lcc_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.lcc_cd}
+        </foreach>
+        AND sub_lcc_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.sub_lcc_cd}
+        </foreach>
+        AND inco_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.inco_cd}
+        </foreach>
+        AND cntrt_curr_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.cntrt_curr_cd}
+        </foreach>
+        AND pay_curr_cd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.pay_curr_cd}
+        </foreach>
+        AND prod_gcd IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.prod_gcd}
+        </foreach>
+        AND trff_stat_date IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item.trff_stat_date}
+        </foreach>
+
+
+    </select>
 </mapper>
 
