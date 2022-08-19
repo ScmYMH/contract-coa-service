@@ -2,9 +2,11 @@ server:
   port: 9999
 
 spring:
+  application:
+    name: contract-coa-service
   devtools:
-  livereload:
-    enabled: true
+    livereload:
+      enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://3.37.155.50:5432/scm?allowMultiQueries=true
@@ -18,3 +20,10 @@ spring:
 
 mybatis:
   config-location: classpath:config/myBatis.xml
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
