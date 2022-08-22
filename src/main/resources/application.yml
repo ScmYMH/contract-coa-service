@@ -18,6 +18,7 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+
 mybatis:
   config-location: classpath:config/myBatis.xml
 
