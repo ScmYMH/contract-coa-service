@@ -33,11 +33,11 @@
     </select>
     <select id="getContractInfoByConditions" resultType="ContractAndMasterJoinDto">
         SELECT
-            a.cntrt_nm, b.cd_v_meaning, a.cntrt_start_date, a.cntrt_end_date, a.user_nm, a.cntrt_id
+            a.cntrt_nm, b.cd_v_meaning, a.cntrt_start_date, a.cntrt_end_date, a.user_nm, a.cntrt_id, a.cntrt_curr_cd
         FROM
             (
                 SELECT
-                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date
+                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.cntrt_curr_cd
                 FROM
                     tcms.tb_cntrt_info tci
                 JOIN
