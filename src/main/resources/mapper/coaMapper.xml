@@ -33,11 +33,11 @@
     </select>
     <select id="getContractInfoByConditions" resultType="ContractAndMasterJoinDto">
         SELECT
-            a.cntrt_nm, b.cd_v_meaning, a.cntrt_start_date, a.cntrt_end_date, a.user_nm, a.cntrt_id, a.cntrt_curr_cd
+            *
         FROM
             (
                 SELECT
-                    tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.cntrt_curr_cd
+                    tci.ins_person_id, tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.del_yn, tci.cntrt_curr_cd
                 FROM
                     tcms.tb_cntrt_info tci
                 JOIN
@@ -53,6 +53,8 @@
             a.cntrt_id LIKE CONCAT('%', #{cntrt_id}, '%')
         AND
             a.cntrt_nm LIKE CONCAT('%', #{cntrt_nm}, '%')
+        and
+            a.del_yn = 'N'
         AND
             b.cd_v_meaning LIKE CONCAT('%', #{cd_v_meaning}, '%')
         <choose>
@@ -85,6 +87,7 @@
         )
     </insert>
     <update id="updateCntrtInfo" parameterType="ContractInfoDto">
+        WITH jobUpdate AS(
         UPDATE tcms.tb_cntrt_info
         SET UPD_DATE = #{updDate}
             ,UPD_TIME = #{updTime}
@@ -99,5 +102,28 @@
             ,CNTRT_CURR_CD = #{cntrtCurrCd}
             ,CNTRT_EDIT_COMMENT = #{cntrtCurrCd}
         WHERE CNTRT_ID = #{cntrtId}
+        )
+        INSERT INTO TCMS.TB_CNTRT_HISTORY
+        (
+            CNTRT_ID, CNTRT_TCD, CORP_ID, CNTRT_NM, CNTRT_SCD, CRE_PERSON_ID, CNTRT_STAT_DATE, CNTRT_END_DATE,
+            CNTRT_CURR_CD, INS_DATE, INS_TIME, INS_PERSON_ID, UPD_DATE, UPD_TIME, UPD_PERSON_ID, CNTRT_TYP_GCD,
+            CNTRT_EDIT_COMMENT
+        )
+        VALUES
+        (
+            #{cntrtId}, #{cntrtTcd}, #{corpId}, #{cntrtNm}, #{cntrtScd}, #{crePersonId}, #{cntrtStartDate}, #{cntrtEndDate},
+            #{cntrtCurrCd}, #{insDate}, #{insTime}, #{insPersonId}, #{updDate}, #{updTime}, #{updPersonId}, #{cntrtTypGcd},
+            #{cntrtEditComment}
+        )
+    </update>
+    <update id="deleteCntrtInfo" parameterType="ContractInfoDto">
+        UPDATE
+            tcms.tb_cntrt_info
+        SET
+             UPD_DATE = #{updDate}
+            ,UPD_TIME = #{updTime}
+            ,DEL_YN = #{delYn}
+        WHERE
+            CNTRT_ID = #{cntrtId}
     </update>
 </mapper>

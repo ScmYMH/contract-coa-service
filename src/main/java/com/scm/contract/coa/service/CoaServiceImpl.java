@@ -68,6 +68,28 @@ public class CoaServiceImpl implements CoaService {
 
     @Override
     public Integer updateCntrtInfo(ContractInfoDto contractInfoDto) {
+        Date today = new Date();
+
+        contractInfoDto.setDelYn("N");
+        contractInfoDto.setInsDate(new SimpleDateFormat("yyyyMMdd").format(today));
+        contractInfoDto.setInsTime(new SimpleDateFormat("HHmmss").format(today));
+        contractInfoDto.setUpdDate(new SimpleDateFormat("yyyyMMdd").format(today));
+        contractInfoDto.setUpdTime(new SimpleDateFormat("HHmmss").format(today));
+        contractInfoDto.setCorpId("PI");
+
         return coaMapper.updateCntrtInfo(contractInfoDto);
+    }
+
+    @Override
+    public Integer deleteCntrtInfo(String cntrtId) {
+        Date today = new Date();
+        ContractInfoDto contractInfoDto = new ContractInfoDto();
+
+        contractInfoDto.setCntrtId(cntrtId);
+        contractInfoDto.setUpdDate(new SimpleDateFormat("yyyyMMdd").format(today));
+        contractInfoDto.setUpdTime(new SimpleDateFormat("HHmmss").format(today));
+        contractInfoDto.setDelYn("Y");
+
+        return coaMapper.deleteCntrtInfo(contractInfoDto);
     }
 }

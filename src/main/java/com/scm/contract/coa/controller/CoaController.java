@@ -32,6 +32,11 @@ public class CoaController {
         return coaService.updateCntrtInfo(contractInfoDto);
     }
 
+    @PutMapping("/{cntrtId}")
+    public Integer deleteCntrtInfo(@PathVariable String cntrtId){
+        return coaService.deleteCntrtInfo(cntrtId);
+    }
+
     @GetMapping("/search")
     public List<ContractAndMasterJoinDto> getAllContractList(
             @RequestParam String cntrtId, @RequestParam String cntrtNm,

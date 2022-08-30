@@ -5,8 +5,11 @@
 <configuration>
     <typeAliases>
         <package name="com.scm.contract.coa.model" />
+        <package name="com.scm.contract.coaChange.model"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/coaMapper.xml"></mapper>
+        <mapper resource="mapper/coaChangeMapper.xml"></mapper>
     </mappers>
 </configuration>
+

@@ -13,5 +13,6 @@ public class ContractAndMasterJoinDto {
     private String user_nm;
     private String cntrt_id;
     private String ins_date;
+    private String ins_person_id;
     private String cntrt_curr_cd;
 }
