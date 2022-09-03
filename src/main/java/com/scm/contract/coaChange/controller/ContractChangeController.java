@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("coaChange")
+@RequestMapping("coa/change")
 @Slf4j
 public class ContractChangeController {
 
