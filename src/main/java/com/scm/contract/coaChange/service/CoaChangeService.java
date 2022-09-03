@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CoaChangeService {
 
-    List<ContractChangeInfoDto> getCoaChangeInfo();
+    List<ContractChangeInfoDto> getCoaChangeInfo(String cntrt_id);
 
 }

@@ -24,7 +24,7 @@
         FROM   TCOM.tb_user_info
         WHERE  USER_ID = T1.UPD_PERSON_ID) AS USER_NM
         FROM   TCMS.tb_cntrt_history T1
-        WHERE  CNTRT_ID = '20220501000003'
+        WHERE  CNTRT_ID = #{cntrt_id}
         ORDER BY T1.CNTRT_LOG_SEQ_NO desc
     </select>
 </mapper>

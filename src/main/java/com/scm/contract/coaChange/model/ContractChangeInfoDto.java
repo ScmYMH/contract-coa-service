@@ -12,5 +12,6 @@ public class ContractChangeInfoDto {
     private String upd_time;
     private String cntrt_edit_comment;
     private String user_nm;
+    private String cntrt_id;
 
 }

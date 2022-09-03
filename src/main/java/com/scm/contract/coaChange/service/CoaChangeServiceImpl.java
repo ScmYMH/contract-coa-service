@@ -15,8 +15,8 @@ public class CoaChangeServiceImpl implements CoaChangeService{
     @Autowired
     CoaChangeMapper coaChangeMapper;
     @Override
-    public List<ContractChangeInfoDto> getCoaChangeInfo() {
+    public List<ContractChangeInfoDto> getCoaChangeInfo(String cntrt_id) {
 
-        return coaChangeMapper.getCoaChangeInfo();
+        return coaChangeMapper.getCoaChangeInfo(cntrt_id);
     }
 }
