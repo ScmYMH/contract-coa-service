@@ -95,6 +95,7 @@
             ,CORP_ID = #{corpId}
             ,CNTRT_NM = #{cntrtNm}
             ,CNTRT_TCD = #{cntrtTcd}
+            ,CNTRT_TYP_GCD= #{cntrtTypGcd}
             ,CNTRT_SCD = #{cntrtScd}
             ,CRE_PERSON_ID = #{crePersonId}
             ,CNTRT_START_DATE = #{cntrtStartDate}
