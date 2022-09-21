@@ -37,7 +37,7 @@
         FROM
             (
                 SELECT
-                    tci.ins_person_id, tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.del_yn, tci.cntrt_curr_cd
+                    tci.cntrt_tcd, tci.ins_person_id, tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.del_yn, tci.cntrt_curr_cd
                 FROM
                     tcms.tb_cntrt_info tci
                 JOIN
