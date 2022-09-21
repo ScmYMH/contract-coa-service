@@ -37,6 +37,7 @@
         FROM
             (
                 SELECT
+                    (select cd_v_meaning from tcom.tb_code_definition where cd_v = tci.cntrt_tcd) as cntrt_tcd_name,
                     tci.cntrt_tcd, tci.ins_person_id, tci.cntrt_nm, tci.cntrt_scd, tci.cntrt_start_date, tci.cntrt_end_date, tui.user_nm, tci.cntrt_id, tci.ins_date, tci.del_yn, tci.cntrt_curr_cd
                 FROM
                     tcms.tb_cntrt_info tci
