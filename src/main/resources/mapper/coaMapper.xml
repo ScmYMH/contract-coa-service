@@ -70,7 +70,7 @@
                 a.ins_date LIKE CONCAT('%', #{ins_date}, '%')
             </otherwise>
         </choose>
-        ORDER BY a.cntrt_end_date
+        ORDER BY a.cntrt_id DESC
     </select>
 
     <insert id="postContractInfo" parameterType="ContractInfoDto">
